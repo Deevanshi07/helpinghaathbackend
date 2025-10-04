@@ -2,7 +2,15 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import fs from 'fs';
+
+// ensure uploads dir exists on Render too
+fs.mkdirSync('uploads', { recursive: true });
+
 import multer from 'multer';
+const upload = multer({ dest: 'uploads/' });
+
+
 
 const app = express();
 app.use((req, res, next) => { 
