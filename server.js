@@ -5,6 +5,11 @@ import cors from 'cors';
 import multer from 'multer';
 
 const app = express();
+app.use((req, res, next) => { 
+  console.log(req.method, req.url); 
+  next(); 
+});
+
 const PORT = process.env.PORT || 3000;
 const ORIGIN = process.env.ALLOW_ORIGIN?.split(',') || '*';
 
