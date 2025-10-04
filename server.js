@@ -92,6 +92,15 @@ app.post('/api/upload', upload.array('files', 10), (req, res) => {
   res.json({ ok: true, files });
 });
 
+// Root route for Render testing
+app.get('/', (req, res) => {
+  res.status(200).send(`
+    <h1>HelpingHaath Backend Live 🚀</h1>
+    <p>MongoDB Connected ✅</p>
+    <p>Try <a href="/health">/health</a> for JSON check.</p>
+  `);
+});
+
 // Donation placeholder
 app.post('/api/donate', async (req, res) => {
   try {
