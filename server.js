@@ -75,4 +75,12 @@ app.post('/api/donate', async (req, res) => {
   res.json({ ok: true, donation: entry });
 });
 
+app.get('/', (req, res) => {
+  res.send('OK');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ ok: true });
+});
+
 app.listen(PORT, () => console.log(`Backend running on ${PORT}`));
