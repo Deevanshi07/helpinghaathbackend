@@ -2,14 +2,13 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import fs from 'fs';
+import multer from 'multer';
 
 // ensure uploads dir exists on Render too
+import fs from 'fs';
 fs.mkdirSync('uploads', { recursive: true });
 
-import multer from 'multer';
-const upload = multer({ dest: 'uploads/' });
-
+const upload = multer({ dest: 'uploads/' });   // <-- bas yeh ek hi baar
 
 
 const app = express();
@@ -91,7 +90,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 // Upload — for now, local only (Cloudinary later)
-const upload = multer({ dest: 'uploads/' });
+// const upload = multer({ dest: 'uploads/' });
 app.post('/api/upload', upload.array('files', 10), (req, res) => {
   const files = (req.files || []).map(f => ({
     original: f.originalname,
